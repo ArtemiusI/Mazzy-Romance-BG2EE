@@ -1,0 +1,7 @@
+IF
+    Global("C0MazzyVampire","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetGlobal("C0MazzyVampire","GLOBAL",2)
+        CreateCreature("C0MAZVAM",[1819.207],S)  // Jaheira
+END

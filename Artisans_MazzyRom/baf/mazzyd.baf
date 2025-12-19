@@ -1,0 +1,15 @@
+IF
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    RealGlobalTimerExpired("C0MazzyLoveTalkTimer","GLOBAL")
+	  Global("C0MazzyRomanceActive","GLOBAL",2)
+	  Global("C0MazzyLoveTalk","GLOBAL",27)
+    AreaType(OUTDOOR)
+    TimeOfDay(NIGHT)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0MazzyLoveTalkTimer","GLOBAL",2500)
+    SetGlobal("C0MazzyLoveTalk","GLOBAL",28)
+	  Interact(Player1)
+END

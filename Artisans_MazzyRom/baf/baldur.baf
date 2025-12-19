@@ -1,0 +1,57 @@
+IF
+	!Alignment(Player1,MASK_EVIL)
+	Global("C0MazzyRomanceMatch","GLOBAL",0)
+THEN
+  RESPONSE #100
+	SetGlobal("C0MazzyRomanceMatch","GLOBAL",1)
+END
+
+IF
+    OR(2)
+    Global("C0MazzyRomanceActive","GLOBAL",1)
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+    Global("MazzyNoCure","GLOBAL",1)
+THEN
+  RESPONSE #100
+	SetGlobal("C0MazzyRomanceActive","GLOBAL",3)
+END
+
+IF
+    Global("C0MazzyRomanceActive","GLOBAL",1)
+    !InPartyAllowDead("Mazzy")  // Mazzy
+    Dead("Mazzy")  // Mazzy
+THEN
+    RESPONSE #100
+        SetGlobal("C0MazzyRomanceActive","GLOBAL",3)
+        SetGlobal("C0MazzyRomanceReset","GLOBAL",1)
+END
+
+IF
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+    !InPartyAllowDead("Mazzy")  // Mazzy
+    Dead("Mazzy")  // Mazzy
+THEN
+    RESPONSE #100
+        SetGlobal("C0MazzyRomanceActive","GLOBAL",3)
+        SetGlobal("C0MazzyRomanceReset","GLOBAL",2)
+END
+
+IF
+    Global("C0MazzyRomanceReset","GLOBAL",1)
+    Global("C0MazzyRomanceActive","GLOBAL",3)
+    !Dead("Mazzy")  // Mazzy
+THEN
+    RESPONSE #100
+        SetGlobal("C0MazzyRomanceActive","GLOBAL",1)
+        SetGlobal("C0MazzyRomanceReset","GLOBAL",0)
+END
+
+IF
+    Global("C0MazzyRomanceReset","GLOBAL",2)
+    Global("C0MazzyRomanceActive","GLOBAL",3)
+    !Dead("Mazzy")  // Mazzy
+THEN
+    RESPONSE #100
+        SetGlobal("C0MazzyRomanceActive","GLOBAL",2)
+        SetGlobal("C0MazzyRomanceReset","GLOBAL",0)
+END

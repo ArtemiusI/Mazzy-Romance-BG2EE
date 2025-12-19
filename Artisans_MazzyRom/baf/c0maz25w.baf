@@ -1,0 +1,11 @@
+IF
+True()
+THEN
+RESPONSE #100
+CutSceneId(Player1)
+CreateVisualEffect("SPFLESHS",[1454.1398])
+Wait(1)
+CreateCreature("C0MAZ25W",[1454.1398],14)
+Wait(2)
+ActionOverride("C0MAZ25W",StartDialogueNoSet(Player1))
+END

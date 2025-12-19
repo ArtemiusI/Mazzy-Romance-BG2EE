@@ -1,0 +1,81 @@
+COPY ~%MOD_FOLDER%/CRE~ ~OVERRIDE~
+COPY ~%MOD_FOLDER%/ITM~ ~OVERRIDE~
+
+////////////////////////////////////////
+/////////AUDIO//////////////////////////
+////////////////////////////////////////
+
+LAF HANDLE_AUDIO END
+
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/d/dialog.d~ 
+
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/baf/C0MAZ25W.baf~ 
+
+EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/baf/baldur.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~mazzy.bcs~ ~%MOD_FOLDER%/baf/mazzy.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~ar0809.bcs~ ~%MOD_FOLDER%/baf/ar0809.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~cut218g.bcs~ ~%MOD_FOLDER%/baf/cut218g.baf~ EVALUATE_BUFFER
+
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/baf/C0MAZVAM.baf~ 
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~MAZZYD.BAF~ THEN BEGIN
+
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/baf/mazzyd.baf~ 
+
+    END ELSE BEGIN
+
+EXTEND_TOP ~mazzyd.bcs~ ~%MOD_FOLDER%/baf/mazzyd.baf~ EVALUATE_BUFFER
+
+        END
+
+COPY_EXISTING ~C0MAZVAM.CRE~ ~OVERRIDE~
+WRITE_ASCII 0x248 ~C0MAZVAM~  #8  // override
+WRITE_ASCII 0x2cc ~C0MAZVAM~  #8  // dialogue
+WRITE_ASCII 0x280 ~C0MAZVAM~ #32 // death variable
+SAY NAME1 ~Mazzy~
+SAY NAME2 ~Mazzy~
+
+COPY_EXISTING ~C0MAZBOD.ITM~ ~OVERRIDE~
+SAY NAME1 ~Mazzy's Body~
+SAY NAME2 ~Mazzy's Body~
+SAY DESC ~Mazzy was captured by Bodhi and infected with vampirism, forcing her to end her life. Her limbs have been intentionally broken with her own vampiric strength to prevent herself from doing any harm to you. There may be some way to revive her, though you don't know what it would be.
+
+STATISTICS:
+
+Weight: 110~
+
+COPY_EXISTING ~C0MAZBOD.ITM~ ~OVERRIDE/C0MAZBO2.ITM~
+SAY NAME1 ~Mazzy's Body~
+SAY NAME2 ~Mazzy's Body~
+SAY DESC ~Mazzy was captured by Bodhi and infected with vampirism, forcing her to end her life. Her body has been restored by her mother, yet there are still no signs of life within her. There may be some way to revive her, though you don't know what it would be.
+
+STATISTICS:
+
+Weight: 110~
+
+COPY_EXISTING ~C0MAZAMU.ITM~ ~OVERRIDE~
+SAY NAME1 ~Amulet~
+SAY NAME2 ~Yondallan Charm~
+SAY DESC ~This pendant, carrying the symbol of Yondalla, once belonged to Mazzy's late father. Despite its simplicity, he carried it with him for good luck until his passing. According to Mazzy, she has rememembered him wearing it for as long as he lived.
+
+Weight: 1~
+
+COPY_EXISTING ~C0MAZAMU.ITM~ ~OVERRIDE/C0MAZAM2.ITM~
+SAY NAME1 ~Amulet~
+SAY NAME2 ~Yondallan Charm~
+SAY DESC ~This pendant, carrying the symbol of Yondalla, once belonged to Mazzy's late father. Despite its simplicity, he carried it with him for good luck until his passing. According to Mazzy, she has rememembered him wearing it for as long as he lived.
+
+STATISTICS:
+
+Equipped abilities:
+– Charisma: +3
+– Save vs. Death: +3
+
+Weight: 1~
+
+COPY_EXISTING ~C0MAZ25W.CRE~ ~OVERRIDE~
+WRITE_ASCII 0x248 ~C0MAZ25W~  #8  // override
+WRITE_ASCII 0x2cc ~C0MAZ25W~  #8  // dialogue
+WRITE_ASCII 0x280 ~C0MAZ25W~ #32 // death variable
+SAY NAME1 ~Patrick~
+SAY NAME2 ~Patrick~

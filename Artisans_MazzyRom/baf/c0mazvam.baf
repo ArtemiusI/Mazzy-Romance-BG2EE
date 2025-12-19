@@ -1,0 +1,13 @@
+IF
+    OnCreation()
+THEN
+    RESPONSE #100
+        SetSequence(SEQ_DIE)
+END
+
+IF
+    Die()
+THEN
+    RESPONSE #100
+        DestroySelf()
+END

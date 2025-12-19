@@ -1,0 +1,12 @@
+BACKUP ~weidu_external/backup/Artisans_MazzyRom~
+AUTHOR ~The Artisan~
+AUTO_TRA ~%MOD_FOLDER%/translations/%s~
+
+LANGUAGE ~English~
+         ~english~
+         ~%MOD_FOLDER%/tra/english/setup.tra~
+
+BEGIN ~Mazzy Romance for Baldur's Gate II by The Artisan~
+REQUIRE_PREDICATE GAME_IS ~BG2EE EET~ ~This mod must be installed on Baldur's Gate II: Enhanced Edition!~
+
+INCLUDE ~%MOD_FOLDER%/lib/mazzyrom.tpa~

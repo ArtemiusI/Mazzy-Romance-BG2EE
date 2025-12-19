@@ -1,0 +1,39 @@
+IF
+    Contains("C0MAZBOD",Myself)  // Anomen's Body
+    Contains("MISCBP",Myself)  // Bodhi's Black Heart
+    !Contains("C0MAZAMU",Myself)
+    Global("C0MazzyRomanceCleanseNoWork","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("C0MazzyRomanceCleanseNoWork","GLOBAL",1)  // Shadow Temple
+        CreateVisualEffect("SPMETSW2",[2592.1701])
+        CreateVisualEffect("SPMETSW2",[2645.1742])
+        Wait(1)
+        CreateVisualEffect("SPFLESHS",[2565.1677])
+        Wait(1)
+        DisplayStringHeadNoLog(Player1,~For a moment, you think you see Mazzy's body stir... but the next moment, she is still and unmoving once more. Perhaps the damage she has inflicted to her own body is preventing her restoration... at a loss, your thoughts suddenly stray to her last wish to be with her family.~)
+        SetInterrupt(TRUE)
+END
+
+IF
+    Contains("C0MAZBO2",Myself)  // Anomen's Body
+    Contains("MISCBP",Myself)  // Bodhi's Black Heart
+    Contains("C0MAZAMU",Myself)
+    Global("C0MazzyRomanceCleanse","GLOBAL",0)
+THEN
+    RESPONSE #100
+        SetInterrupt(FALSE)
+        SetGlobal("C0MazzyRomanceCleanse","GLOBAL",1)  // Shadow Temple
+        DestroyItem("C0MAZBOD")  // Anomen's Body
+        DestroyItem("MISCBP")  // Bodhi's Black Heart
+        DestroyItem("C0MAZAMU",Myself)
+        CreateVisualEffect("SPMETSW2",[2592.1701])
+        CreateVisualEffect("SPMETSW2",[2645.1742])
+        Wait(1)
+        CreateVisualEffect("SPFLESHS",[2565.1677])
+        Wait(1)
+        MoveGlobal("AR1401","Mazzy",[2565.1677])
+        GiveItemCreate("C0MAZAM2","MAZZY",0,0,0)
+        SetInterrupt(TRUE)
+END
