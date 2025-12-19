@@ -253,7 +253,7 @@ CHAIN BMAZZY lt4.6
 ~Thank you, <CHARNAME>. I do feel more assured, having heard a second voice, and one that I respect, echoing my thoughts. It gives me more confidence in my current course.~
 == BMAZZY ~Though you did not need to use words to assure me. I have long come to recognize there are examples worth following outside of knighthood as well.~
 == BMAZZY IF ~Class(Player1,PALADIN)~ THEN ~You are a paladin yourself, and a truly worthy <PRO_MANWOMAN> of the title, despite the darkness that was not of your own will... yet there is a goodness within you separate from it, that plays an equal part in keeping it at bay.~
-== BMAZZY IF ~Class(Player1,PALADIN)~ THEN ~You may not be a paladin, but in spite of that, there is a goodness within you that keeps the darkness that was not of your own will at bay.~
+== BMAZZY IF ~!Class(Player1,PALADIN)~ THEN ~You may not be a paladin, but in spite of that, there is a goodness within you that keeps the darkness that was not of your own will at bay.~
 == BMAZZY ~Even an archetypical knight may succumb to such overwhelming callings... yet you still have managed to overcome it. I could hardly consider you any less than any knight I have ever known of.~
 END
   ++ ~I wouldn't say that. I'm just a normal person.~ + lt4.8
