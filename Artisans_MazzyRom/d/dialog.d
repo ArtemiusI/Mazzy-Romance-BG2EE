@@ -1019,7 +1019,7 @@ END
   + ~Gender(Player1,MALE)
      OR(2)
      Race(Player1,HALFLING)
-     Race(Player1,DWARF)~ + ~Not at all. I'm hoping that we'll have a chance to raise a child together... or several, if you like.~ + lt17.6
+     Race(Player1,DWARF)~ + ~I'd be willing to support that dream. I'm hoping that we'll have a chance to raise a child together... or several, if you like.~ + lt17.6
   ++ ~I'm sorry. It's just not the type of life I ever enjoy. I hope it won't become an obstacle for us.~ + lt17.7
   
 CHAIN BMAZZY lt17.5
