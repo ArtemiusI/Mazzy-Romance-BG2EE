@@ -10,7 +10,9 @@ LAF HANDLE_AUDIO END
 COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/d/dialog.d~ 
 
 COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/baf/C0MAZ25W.baf~ 
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/baf/C0MAZVM1.baf~ 
 
+EXTEND_TOP ~cleanse.bcs~ ~%MOD_FOLDER%/baf/cleanse.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/baf/baldur.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~mazzy.bcs~ ~%MOD_FOLDER%/baf/mazzy.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar0809.bcs~ ~%MOD_FOLDER%/baf/ar0809.baf~ EVALUATE_BUFFER
@@ -54,6 +56,17 @@ STATISTICS:
 Weight: 110~
 
 COPY_EXISTING ~C0MAZAMU.ITM~ ~OVERRIDE~
+  LPF ADD_ITEM_EQEFFECT
+    INT_VAR
+      opcode = 319
+	  target = 1
+	  timing = 2
+	  parameter2 = 11
+	  power = 1
+	  special = RESOLVE_STR_REF (~Mazzy~)
+	STR_VAR
+	  resource = MAZZY
+END
 SAY NAME1 ~Amulet~
 SAY NAME2 ~Yondallan Charm~
 SAY DESC ~This pendant, carrying the symbol of Yondalla, once belonged to Mazzy's late father. Despite its simplicity, he carried it with him for good luck until his passing. According to Mazzy, she has rememembered him wearing it for as long as he lived.

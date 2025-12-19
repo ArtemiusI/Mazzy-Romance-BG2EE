@@ -26,6 +26,46 @@ END
 
 IF
     InParty(Myself)
+    Global("SpawnDanno","GLOBAL",0)
+    GlobalLT("C0MazzyLoveTalk","GLOBAL",14)
+    OR(2)
+    Global("C0MazzyRomanceActive","GLOBAL",1)
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+    Global("C0MazzyRomanceDelayDannoSpawn","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("C0MazzyRomanceDelayDannoSpawn","GLOBAL",1)
+    SetGlobal("SpawnDanno","GLOBAL",-1)
+END
+
+IF
+    InParty(Myself)
+    GlobalGT("C0MazzyLoveTalk","GLOBAL",13)
+    OR(2)
+    Global("C0MazzyRomanceActive","GLOBAL",1)
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+    Global("C0MazzyRomanceDelayDannoSpawn","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SpawnDannoTimer","GLOBAL",ONE_DAY)
+    SetGlobal("C0MazzyRomanceDelayDannoSpawn","GLOBAL",2)
+    SetGlobal("SpawnDanno","GLOBAL",0)
+END
+
+IF
+    InParty(Myself)
+    !Global("C0MazzyRomanceActive","GLOBAL",1)
+    !Global("C0MazzyRomanceActive","GLOBAL",2)
+    Global("C0MazzyRomanceDelayDannoSpawn","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("SpawnDannoTimer","GLOBAL",ONE_DAY)
+    SetGlobal("C0MazzyRomanceDelayDannoSpawn","GLOBAL",2)
+    SetGlobal("SpawnDanno","GLOBAL",0)
+END
+
+IF
+    InParty(Myself)
 	  InParty("KORGAN")
     Global("C0MazzyRomanceActive","GLOBAL",2)
 	  Global("C0MazzyRomanceKorganJealous","GLOBAL",0)

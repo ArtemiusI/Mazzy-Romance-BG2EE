@@ -1238,7 +1238,7 @@ FadeToColor([30.0],0)
 Wait(3)
 FadeFromColor([30.0],0)
 Wait(2)
-StartDialogNoSet(Player1)~ EXIT
+Interact(Player1)~ EXIT
 
 CHAIN IF WEIGHT #-1 ~Global("C0MazzyLoveTalkVyatri","GLOBAL",2)~ THEN BMAZZY vyatri2
 ~Well, that was a delightful bit of indulgence. I am more than satiated, I must say. What do you think, <CHARNAME>?~ [C0BLANK]
@@ -1561,6 +1561,7 @@ StartDialogNoSet(Player1)~ EXIT
 CHAIN IF WEIGHT #-1 ~Global("C0MazzyVampire","GLOBAL",4)~ THEN VARA1 mazzy-vampire3
 ~I have done what I can, <CHARNAME>... her body is healed to the extent that I am able. And take this... it is her late father's lucky charm. Until the day we lost him, he always wore it... if it is kept close to her body, Mazzy will recognize it no matter what, and it will draw her spirit back to this realm.~
 DO ~GiveItemCreate("C0MAZBO2",Player1,0,0,0)
+    GiveItemCreate("C0MAZAMU",Player1,0,0,0)
     SetGlobal("C0MazzyVampire","GLOBAL",5)~
 == VARA1 IF ~Global("C0MazzyRomanceCleanseNoWork","GLOBAL",1)~ THEN ~The rest I must leave to you, <CHARNAME>. Return to where you attempted to restore her and try again... if the gods are merciful, you will succeed this time.~
 == VARA1 IF ~!Global("C0MazzyRomanceCleanseNoWork","GLOBAL",1)~ THEN ~The rest I must leave to you, <CHARNAME>. Find a way to restore her of vampirism, and there will yet be hope for her.~

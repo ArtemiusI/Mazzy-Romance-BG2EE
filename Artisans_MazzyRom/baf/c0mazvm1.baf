@@ -9,11 +9,13 @@ THEN
         CreateVisualEffectObject("SPDISPMA",Myself)
         DropInventory()
         SetLeavePartyDialogFile()
-        ChangeAIScript("VAMPAMB",OVERRIDE)
-        ChangeAIScript("",DEFAULT)
         DialogInterrupt(FALSE)
+        SetGlobal("Deactivate0801","AR0800",3)
+        ActionOverride("BODHIAMB",ForceSpell(Myself,DRYAD_TELEPORT))
         LeaveParty()
         EndCutSceneMode()
+        ForceSpell(Myself,DRYAD_TELEPORT)
+        DestroySelf()
 END
 
 IF

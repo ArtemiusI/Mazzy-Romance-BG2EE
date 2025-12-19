@@ -25,9 +25,9 @@ THEN
     RESPONSE #100
         SetInterrupt(FALSE)
         SetGlobal("C0MazzyRomanceCleanse","GLOBAL",1)  // Shadow Temple
-        DestroyItem("C0MAZBOD")  // Anomen's Body
+        DestroyItem("C0MAZBO2")  // Anomen's Body
         DestroyItem("MISCBP")  // Bodhi's Black Heart
-        DestroyItem("C0MAZAMU",Myself)
+        DestroyItem("C0MAZAMU")
         CreateVisualEffect("SPMETSW2",[2592.1701])
         CreateVisualEffect("SPMETSW2",[2645.1742])
         Wait(1)
