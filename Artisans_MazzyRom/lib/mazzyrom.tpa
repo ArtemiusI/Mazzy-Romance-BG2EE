@@ -69,14 +69,14 @@ COPY_EXISTING ~C0MAZAMU.ITM~ ~OVERRIDE~
 END
 SAY NAME1 ~Amulet~
 SAY NAME2 ~Yondallan Charm~
-SAY DESC ~This pendant, carrying the symbol of Yondalla, once belonged to Mazzy's late father. Despite its simplicity, he carried it with him for good luck until his passing. According to Mazzy, she has rememembered him wearing it for as long as he lived.
+SAY DESC ~This pendant, carrying the symbol of Yondalla, once belonged to Mazzy's late father. Despite its simplicity, he carried it with him for good luck until his passing.
 
 Weight: 1~
 
 COPY_EXISTING ~C0MAZAMU.ITM~ ~OVERRIDE/C0MAZAM2.ITM~
 SAY NAME1 ~Amulet~
 SAY NAME2 ~Yondallan Charm~
-SAY DESC ~This pendant, carrying the symbol of Yondalla, once belonged to Mazzy's late father. Despite its simplicity, he carried it with him for good luck until his passing. According to Mazzy, she has rememembered him wearing it for as long as he lived.
+SAY DESC ~This pendant, carrying the symbol of Yondalla, once belonged to Mazzy's late father. Despite its simplicity, he carried it with him for good luck until his passing. According to Mazzy, she has remembered him wearing it for as long as he lived.
 
 STATISTICS:
 
