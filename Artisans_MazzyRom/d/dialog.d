@@ -1708,7 +1708,7 @@ END
 /// VALYGAR
 
 CHAIN IF WEIGHT #-1 ~Global("C0MazzyRomanceValygarInteraction","GLOBAL",2)~ THEN BVALYGA valygar
-~<CHARNAME>, a word?~ [C0MAZRK1]
+~<CHARNAME>, a word?~ [C0BLANK]
 END
   ++ ~Of course, Valygar. Speak your mind.~ + valygar.1
   ++ ~It's not like you to suddenly speak up like this. Go on.~ + valygar.1
