@@ -1,0 +1,146 @@
+IF
+    InParty(Myself)
+    OR(2)
+    Alignment(Player1,MASK_EVIL)
+    ReputationLT(Player1,8)
+    OR(2)
+    Global("C0MazzyRomanceActive","GLOBAL",1)
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+THEN
+    RESPONSE #100
+        SetGlobal("C0MazzyRomanceActive","GLOBAL",3)
+END
+
+IF
+    InParty(Myself)
+    Global("C0MazzyToBLoveTalk","GLOBAL",0)
+    GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
+        SetGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    RealGlobalTimerExpired("C0MazzyToBLoveTalkTimer","GLOBAL")
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+    !AreaType(DUNGEON)
+    See(Player1)
+    !See([ENEMY])
+    !Range([NEUTRAL],10)
+    CombatCounter(0)
+    Switch("C0MazzyToBLoveTalk","GLOBAL")
+THEN
+  RESPONSE #1
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+	  Interact(Player1)
+  RESPONSE #2
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+    GlobalLT("C0MazzyToBLoveTalk","GLOBAL",4)
+    Global("SaradushSacked","GLOBAL",1)
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+    Global("C0MazzyToBLoveTalkToBSaradush","GLOBAL",0)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",200)
+        SetGlobal("C0MazzyToBLoveTalkToBSaradush","GLOBAL",1)
+        SetGlobal("C0MazzyToBLoveTalk","GLOBAL",3)
+END
+
+IF
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    RealGlobalTimerExpired("C0MazzyToBLoveTalkTimer","GLOBAL")
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+    Global("C0MazzyToBLoveTalkToBSaradush","GLOBAL",1)
+    !AreaType(DUNGEON)
+    See(Player1)
+    !See([ENEMY])
+    !Range([NEUTRAL],10)
+    CombatCounter(0)
+    Switch("C0MazzyToBLoveTalk","GLOBAL")
+THEN
+  RESPONSE #3
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+	  Interact(Player1)
+  RESPONSE #4
+    RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+END
+
+IF
+    InParty(Myself)
+    GlobalLT("C0MazzyToBLoveTalk","GLOBAL",6)
+    GlobalGT("WraithPunish","GLOBAL",0)
+    AreaCheck("AR5202")
+    Dead("HGWRA01")
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+THEN
+    RESPONSE #100
+        SetGlobal("C0MazzyToBLoveTalk","GLOBAL",6)
+        Interact(Player1)
+END
+
+IF
+    InParty(Myself)
+    GlobalLT("C0MazzyToBLoveTalk","GLOBAL",7)
+    GlobalGT("Chapter","GLOBAL",%bg2_chapter_8%)
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+THEN
+    RESPONSE #100
+        RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
+        SetGlobal("C0MazzyToBLoveTalk","GLOBAL",7)
+END
+
+IF
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    RealGlobalTimerExpired("C0MazzyToBLoveTalkTimer","GLOBAL")
+    Global("C0MazzyRomanceActive","GLOBAL",2)
+    !AreaType(DUNGEON)
+    See(Player1)
+    !See([ENEMY])
+    !Range([NEUTRAL],10)
+    CombatCounter(0)
+    Switch("C0MazzyToBLoveTalk","GLOBAL")
+THEN
+  RESPONSE #7
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+	  Interact(Player1)
+  RESPONSE #8
+    RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+  RESPONSE #10
+    RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+  RESPONSE #11
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+	  Interact(Player1)
+  RESPONSE #12
+    RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+  RESPONSE #13
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+	  Interact(Player1)
+  RESPONSE #14
+    RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+  RESPONSE #15
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+	  Interact(Player1)
+  RESPONSE #16
+    IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+END

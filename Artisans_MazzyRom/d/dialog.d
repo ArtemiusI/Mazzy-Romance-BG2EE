@@ -1842,6 +1842,28 @@ CHAIN IF WEIGHT #-1 ~Global("C0MazzyRomanceDornSexReaction","GLOBAL",1)~ THEN MA
 DO ~SetGlobal("C0MazzyRomanceDornSexReaction","GLOBAL",2)
 SetGlobal("C0MazzyRomanceActive","GLOBAL",3)~ EXIT
 
+// tree of life
+
+ADD_TRANS_TRIGGER PLAYER1 33
+~!Global("C0MazzyRomanceActive","GLOBAL",2)~ IF ~IsValidForPartyDialog("Mazzy")~
+
+EXTEND_TOP PLAYER1 33 #1
+IF ~IsValidForPartyDialog("Mazzy") Global("C0MazzyRomanceActive","GLOBAL",2)~ EXTERN PLAYER1 C0MazzyToL
+END
+
+CHAIN PLAYER1 C0MazzyToL
+~Mazzy: your stalwart and valiant companion, who has sworn her sword, bow, life and heart all to you. You know she will stand with you to the very end without a hint of fear... yet part of you still wonders if there is any doubt yet remaining within her.~
+END
+  ++ ~Mazzy... I—~ EXTERN MAZZYJ C0MazzyToL.1
+
+CHAIN MAZZYJ C0MazzyToL.1
+~Come now, <CHARNAME>, I think we both know each other well enough to know there is no room for hesitation in either of our hearts. But as this may be the right time... there are indeed some words I must say first.~
+== MAZZYJ ~Once, I believed myself prepared to face death just as I do now, but it was a fool's courage, nothing more. I considered myself having lost what mattered the most to me, and with little more to lose, I had no cause to fear death if it meant I could meet my fallen comrades once again.~
+== MAZZYJ ~However... I see how different things are this time. No longer do I stand in defiance against an end, but for a chance at a new beginning... one we will not have unless we are victorious this day.~
+== MAZZYJ ~Here, I fight not as a knight, not for honor or glory, but for your soul, and our future... and by Arvoreen, I shall not see it taken from us by any evil, no matter how powerful.~
+== MAZZYJ ~Take the lead, <CHARNAME>, and bring me to battle. For you, I will give all that I am and ever will be, just as you have given me the greatest gift of all. Victory, and life, awaits us, my love. Let us grasp at it together.~
+EXTERN PLAYER1 53
+
 // PID
 
 CHAIN IF ~IsGabber(Player1)
@@ -1894,27 +1916,357 @@ DO ~RealSetGlobalTimer("C0MazzyLoveTalkTimer","GLOBAL",120)~ EXIT
 
 // ToB
 
+CHAIN IF WEIGHT #-1 ~Global("C0MazzyToBLoveTalk","GLOBAL",2)~ THEN BMAZZY25 toblt1
+~Our journey feels endless. Even with our victories, the battles and hardships do not end. Peace for us, and for the realms, continues to elude us all.~ [C0BLANK]
+= ~I hate to surrender, to admit that I am tired. Adventuring was supposed to be my life's purpose. But I may have found my limit.~
+END
+  ++ ~So have I. I wish we could have had our rest for even a day longer.~ + toblt1.1
+  ++ ~This time, it'll be the end. Then we'll leave this life for a while, until we're ready to start again.~ + toblt1.2
+  ++ ~I don't mind. If it means my destiny will be achieved, then I'm eager to continue.~ + toblt1.3
+  ++ ~Please, Mazzy. I'm tired too. I'm in no mood for this.~ + toblt1.0
+
+CHAIN BMAZZY25 toblt1.0
+~As you wish, my love. Forgive me for my inconsideration.~
+EXIT
+
+CHAIN BMAZZY25 toblt1.1
+~Perhaps it is for the best. A day, a year, an hour, even... I would have been happier, but we must face this reality sooner or latter. Better to get it over with.~
+EXTERN BMAZZY25 toblt1.4
+
+CHAIN BMAZZY25 toblt1.2
+~I am surprised you even hold the enthusiasm for continuing to adventure, after all you have been through. Even I had begin to entertain proper retirement, as unthinkable as that once would have been for me so soon.~
+EXTERN BMAZZY25 toblt1.4
+
+CHAIN BMAZZY25 toblt1.3
+~And what destiny will that be, my love? Should I begin fearing for you, to add to my worries that only seem to grow higher as the days go by?~
+EXTERN BMAZZY25 toblt1.4
+
+CHAIN BMAZZY25 toblt1.4
+~Forgive me. This is not, nor has it ever been about me. This is your fate to meet, though your troubles are just as much mine, and 'tis because this all involves you that I am weary.~
+= ~I was glad to have victory against your adversary, not only because a great evil is gone from the world, but also because, with your restoration, there was a chance that our life was finally ours to choose.~
+= ~Alas, it seems that we must wait even longer. And once we finally reach what you have fought for all this time... I am not even certain I wish to see it.~
+END
+  ++ ~You worry too much, my love. Our future will be brighter than ever.~ + toblt1.5
+  ++ ~I'm concerned as well. This has all been the work of my divine essence... which is anything but pure.~ + toblt1.6
+  ++ ~What do you fear to find at the end?~ + toblt1.7
+
+CHAIN BMAZZY25 toblt1.5
+~I believe in your desire for our perfect ending, <CHARNAME>. That you will be free, and we may finally leave this dark chapter of our tale behind us forever. But whether it is even our choice to make...~
+EXTERN BMAZZY25 toblt1.7
+
+CHAIN BMAZZY25 toblt1.6
+~You will overcome it, my love. But even if the fate that awaits you... awaits us, is not dark... who is to say it will be one we can accept?~
+EXTERN BMAZZY25 toblt1.7
+
+CHAIN BMAZZY25 toblt1.7
+~I do not know. I do not even wish to assume. I can only believe in you, my love, and hope that you will never lose control over your fate.~
+= ~After all... I am bound to it now, and whether it be towards happiness or the hells once more... I can do nothing but follow you.~
+EXIT
+
+CHAIN IF WEIGHT #-1 ~Global("C0MazzyToBLoveTalk","GLOBAL",4)~ THEN BMAZZY25 toblt2
+~Saradush... oh, those poor souls. This was precisely what I took the road towards knighthood to prevent. The weight of this failure is overwhelming.~ [C0BLANK]
+END
+  ++ ~There's nothing we could have done, Mazzy.~ + toblt2.1
+  ++ ~We ended the cause of it, which is something.~ + toblt2.2
+  ++ ~No use crying over it. What's done is done.~ + toblt2.2
+
+CHAIN BMAZZY25 toblt2.1
+~Because we were not there when we were needed. And yet, if we were... this struggle would have no doubt continued until the outcome was even worse.~
+EXTERN BMAZZY25 toblt2.3
+
+CHAIN BMAZZY25 toblt2.2
+~Yes. This was not a perfect ending... but it was the lesser of two evils, perhaps. We would have achieved little fighting to the bitter end in the midst of the siege. That is what my mind tells me, yet my heart cries.~
+EXTERN BMAZZY25 toblt2.3
+
+CHAIN BMAZZY25 toblt2.3
+~Protect one thing, and you may yet lose another. Some battles cannot be fully won. I know this, I have studied it many times, yet... I seem to never have learned my lesson.~
+= ~Will it be as such from now on, <CHARNAME>? Can we do better, or will we continue being forced to make sacrifices for the greater good?~
+END
+  ++ ~I don't know.~ + toblt2.4
+  ++ ~We can try.~ + toblt2.5
+  ++ ~Maybe not.~ + toblt2.4
+
+CHAIN BMAZZY25 toblt2.4
+~*sigh* Arvoreen, give me strength... for I am certain I will need it more than ever in the coming days.~
+EXTERN BMAZZY25 toblt2.5
+
+CHAIN BMAZZY25 toblt2.5
+~We were too late this time... but we are here now. And we may yet prevent further tragedies from such from occurring again.~
+= ~For the Saradush... for the Bhaalspawn who were unjustly slain... and for you, <CHARNAME>, let us resolve to continue fighting for the cause of good.~
+= ~This was only a lesson, my love, for what is to come should we fail. But we will not. I will not accept it.~
+EXIT
+
+CHAIN IF WEIGHT #-1 ~Global("C0MazzyToBLoveTalk","GLOBAL",6)~ THEN BMAZZY25 toblt3
+~How unspeakably vile! To draw these feelings of guilt from my heart, and turn them against me! Foul, evil spectres all, and may they never rise again! Never!~ [C0BLANK]
+END
+  ++ ~Calm down, Mazzy. It was all lies. Don't let it affect you.~ + toblt3.1
+  ++ ~I'm so sorry, my love. I know you still blame yourself for Patrick. If not, that cruel performance would never have worked.~ + toblt3.1
+  ++ ~They won't. But these feelings that you have... they can't be banished so easily.~ + toblt3.1
+
+CHAIN BMAZZY25 toblt3.1
+~I... I—~
+= ~I know the truth, <CHARNAME>. Had it all truly been lies, it would not have hurt me. But that accusation was something I have said to myself many times... I still am responsible for the deaths of those I cared for, due to my own brashness and ignorance.~
+= ~There is no measure of atonement that could convince me to truly let go, I think. That was not Patrick, but if he truly is suffering... I would believe it. And that torments me still.~
+END
+  ++ ~I know... I know. But you should know that he's forgiven you, if he's truly the good man you knew him to be.~ + toblt3.2
+  ++ ~Don't believe a word you were just told, my love. You have honored them as best you could all this time. They would be proud of you.~ + toblt3.2
+  ++ ~There's nothing I can say that may help. Just try to forget about it.~ + toblt3.3
+
+CHAIN BMAZZY25 toblt3.2
+~*sigh*~
+= ~Do you know... what gave me the resolve to fight that battle, my love? I think I realized already what lies I was being told... when Patrick pointed an accusing finger at you.~
+= ~I know you not to be what many see the Bhaalspawn as. You are not evil, and I understand it. I think Patrick would have known just as clearly, had he known you. I think... he would have admired you as well.~
+EXTERN BMAZZY25 toblt3.4
+
+CHAIN BMAZZY25 toblt3.3
+~Forget? I could not forget my companions, <CHARNAME>. To do so would be to prove those hateful shadows correct. And I... I will not succumb to them.~
+EXTERN BMAZZY25 toblt3.4
+
+CHAIN BMAZZY25 toblt3.4
+~Let us move past this, <CHARNAME>. My guilt must be faced, but to do it through the words of those fiends would be an insult to my friends' memories.~
+= ~And... I hope you are well too, after that experience. Their target was you more than myself... and my words in defense of you were true. Your foster father would not have said such evil words to you.~
+= ~I believe that much. For anyone who has raised one such as yourself must have been equally noble. Come now, my love... do not let wounds such as these hinder us.~
+EXIT
+
+CHAIN IF WEIGHT #-1 ~Global("C0MazzyToBLoveTalk","GLOBAL",8)~ THEN BMAZZY25 toblt4
+~<CHARNAME>, I wonder if I dare even ask... how do you feel, when another Bhaalspawn falls by your hand? Is it... easy, or difficult?~ [C0BLANK]
+END
+  ++ ~I don't feel anything. They share my essence, but there's no kinship.~ + toblt4.1
+  ++ ~It's a confusing feeling. Even though I know they're evil, and must be stopped... something feels wrong that they must die. Especially by my hand.~ + toblt4.1
+  ++ ~They're evil and dangerous. Isn't it our responsibility to stop them?~ + toblt4.1
+  ++ ~I've long lost any scruples against killing my siblings. That started and ended with Sarevok.~ + toblt4.1
+
+CHAIN BMAZZY25 toblt4.1
+~'Tis strange. I know we have done what we must, and were it not for your presence, I would likely feel nothing but pride in defeating such evil beings... yet I wonder...~
+= ~You should, by all reason, be like them, yet you are not. Whether by chance or your own will, you are different. Yet it makes me wonder what they could have been.~
+= ~If there is evil, it is Bhaal's for corrupting the act of parenthood and turning the spawn into his tools. Even if those such as the Five should not deserve pity... they may still be victims of their... your dead sire's cruelty and ambition.~
+END
+  ++ ~I'm not so sure. Many with power come to abuse it for evil, divine blood or no.~ + toblt4.2
+  ++ ~Bhaal's sins are many, and we, the spawn, are the ones who must pay the price.~ + toblt4.3
+  ++ ~You're thinking too much into it. What happened to the Mazzy who would fearlessly face evil, without a second's hesitation?~ + toblt4.4
+
+CHAIN BMAZZY25 toblt4.2
+~Yet if that is truly so, how do we stop it? How much would it truly take until a world exists in which evil need no longer be fought, and... knights need no longer exist?~
+EXTERN BMAZZY25 toblt4.5
+
+CHAIN BMAZZY25 toblt4.3
+~It truly is the greatest injustice of all. And for that, I could never sit idly by... and so I will fight alongside <PRO_HESHE> who has been wronged, until the wrongs have been righted.~
+EXTERN BMAZZY25 toblt4.5
+
+CHAIN BMAZZY25 toblt4.4
+~I have changed, <CHARNAME>. And I think, perhaps it is better. If not... I may have held the fear that you could become the rest. And that would be a mistake.~
+EXTERN BMAZZY25 toblt4.5
+
+CHAIN BMAZZY25 toblt4.5
+~Forgive me, my love. Your trials are difficult enough as it is. You should not need to question the morality of what you must do as well.~
+= ~I only hope... for those few Bhaalspawn out there who may be like you, and face their suffering and injustice with dignity... they may have a happy ending. As might we.~
+EXIT
+
+CHAIN IF WEIGHT #-1 ~Global("C0MazzyToBLoveTalk","GLOBAL",10)~ THEN BMAZZY25 toblt5
+~Before we retire for the evening, my love... would you sit and talk with me awhile?~ [C0BLANK]
+= ~My thoughts cannot help but stray towards the future... our future, <CHARNAME>. I know, given the severity of the present, that I should focus on what is happening here and now. But... I am too selfish to.~
+END
+  ++ ~There's no shame in thinking about our future, Mazzy. It gives us a reason to keep going.~ + toblt5.1
+  ++ ~Don't worry about what's happening now. Just trust in me to put everything right.~ + toblt5.2
+  ++ ~What sort of thoughts have been on your mind? Maybe telling me will help.~ + toblt5.3
+  ++ ~I can't spare any time for this right now, Mazzy. Good night.~ + toblt5.0
+
+CHAIN BMAZZY25 toblt5.0
+~If you wish, <CHARNAME>... go and rest now.~
+DO ~RestParty()~ EXIT
+
+CHAIN BMAZZY25 toblt5.1
+~But the future may not always be what we expect or hope for, <CHARNAME>. Some may do their very best, yet still lose to fate... once, I thought determination could see anything through, but now I am not so certain.~
+EXTERN BMAZZY25 toblt5.3
+
+CHAIN BMAZZY25 toblt5.2
+~I can believe that from you, my love, even if I could not believe anyone else. You have never been defeated, as far as I have known.~
+EXTERN BMAZZY25 toblt5.3
+
+CHAIN BMAZZY25 toblt5.3
+~I have just come to realize how complicated my life has have become. Once, my goal was a straightforward, albeit unimaginably difficult one. To become a knight, all I had to do was fight for what I myself believed was right.~
+= ~That has not changed, but now, I instead fight for another. And it has made me happier than I could have ever imagined... and I find myself, like a spoiled child, doing nothing but wanting more.~
+= ~The uncertainty of the future both excites and concerns me, <CHARNAME>. It could give me all that I want... or it could take everything from me in a moment. I wish for a respite from it. I wish to embrace you as you are now.~
+END
+  ++ ~Then come to me, my love. I am always ready to embrace you in return.~ + toblt5.4
+  ++ ~Let's go to bed, Mazzy. We should enjoy what we share now, before anything's changed.~ + toblt5.4
+  ++ ~We still have time, Mazzy. Don't think too much about it.~ + toblt5.4
+
+CHAIN BMAZZY25 toblt5.4
+~<CHARNAME>, my love... stay with me tonight. I need your closeness now, more than ever, while I am still certain to receive it.~
+= ~Even if it only makes me cling to you more desperately... it is worth it, just for what I feel now.~
+DO ~RestParty()~ EXIT
+
+CHAIN IF WEIGHT #-1 ~Global("C0MazzyToBLoveTalk","GLOBAL",12)~ THEN BMAZZY25 toblt6
+~Your destiny... has been calling to you, <CHARNAME>, though I cannot see the signs myself. How do you feel about it? Has it become clear to you yet, where this path will finally lead?~ [C0BLANK]
+END
+  ++ ~I would imagine that's obvious. I will take my father's place in the heavens.~ + toblt6.1
+  ++ ~Who knows? The only thing I can say for sure is that it includes you.~ + toblt6.2
+  ++ ~It's still unclear to me, and I hope that will change soon.~ + toblt6.3
+  ++ ~No, and there's no point talking about it.~ + toblt6.0
+
+CHAIN BMAZZY25 toblt6.0
+~None at all? And what of our future, <CHARNAME>? Is that not worth speaking of either?~
+END
+  ++ ~I didn't realize that's what you meant, Mazzy. I'm sorry.~ + toblt6.01
+  ++ ~No. I can't afford to think about that right now.~ + toblt6.02
+
+CHAIN BMAZZY25 toblt6.01
+~Apology accepted. These recent encounters have been most difficult on you... I will not judge you for your thoughts being entirely on them.~
+EXTERN BMAZZY25 toblt6.4
+
+CHAIN BMAZZY25 toblt6.02
+~So be it. If you cannot afford it... then I should not be a burden to you either. I will leave you alone from now on, though it pains me to place a distance between us... it seems that is what you desire.~
+DO ~SetGlobal("C0MazzyRomanceActive","GLOBAL",3)~ EXIT
+
+CHAIN BMAZZY25 toblt6.1
+~Having known the person you are, I am surprised that such a thing might still bring you happiness... but if it truly does, I should not judge you.~
+EXTERN BMAZZY25 toblt6.4
+
+CHAIN BMAZZY25 toblt6.2
+~I hope that mine may include you as well. It seems that with each day, the certainty of such an idea strays closer to a dream than a truth.~
+EXTERN BMAZZY25 toblt6.4
+
+CHAIN BMAZZY25 toblt6.3
+~It will, but will you be ready to accept it? Will I? I am not so certain anymore.~
+EXTERN BMAZZY25 toblt6.4
+
+CHAIN BMAZZY25 toblt6.4
+~We can resolve that matter when it comes. Perhaps I can try to lead your mind to happier thoughts, my love, some of which I have had as of late.~
+= ~Do you remember when I spoke to you regarding the possibility of children, <CHARNAME>? It seems an age ago, yet it was not so long. Too much has distracted us as of late.~
+= ~I am not even certain if I trust my own memory regarding your stance on it. Are you still of the same mind, or has your perspective changed? I will not fault you either way.~
+END
+  + ~!Gender(Player1,MALE)~ + ~I have considered it... and I do want us to have a family together. If they cannot be from our own blood, then we can still care for those who need parents... just like Gorion raised me.~ DO ~SetGlobal("C0MazzyRomanceEpFuture","GLOBAL",1)~ + toblt6.5
+  + ~Gender(Player1,MALE)
+     !Race(Player1,DWARF)
+     !Race(Player1,HALFLING)~ + ~I have considered it... and I do want us to have a family together. If they cannot be from our own blood, then we can still care for those who need parents... just like Gorion raised me.~ DO ~SetGlobal("C0MazzyRomanceEpFuture","GLOBAL",1)~ + toblt6.5
+  + ~Gender(Player1,MALE)
+     OR(2)
+     Race(Player1,HALFLING)
+     Race(Player1,DWARF)~ + ~My thoughts are still the same. I want to start a family with you, Mazzy... and have as many children as both of us would like.~ DO ~SetGlobal("C0MazzyRomanceEpFuture","GLOBAL",2)~ + toblt6.5
+  + ~!Gender(Player1,MALE)~ + ~I wasn't eager about the thought at the time, but something has changed. I wouldn't mind having a family and children, if it's with you.~ DO ~SetGlobal("C0MazzyRomanceEpFuture","GLOBAL",2)~ + toblt6.5
+  + ~Gender(Player1,MALE)
+     !Race(Player1,DWARF)
+     !Race(Player1,HALFLING)~ + ~I wasn't eager about the thought at the time, but something has changed. I wouldn't mind having a family and children, if it's with you.~ DO ~SetGlobal("C0MazzyRomanceEpFuture","GLOBAL",2)~ + toblt6.5
+  + ~Gender(Player1,MALE)
+     OR(2)
+     Race(Player1,HALFLING)
+     Race(Player1,DWARF)~ + ~I wasn't eager about the thought at the time, but something has changed. I wouldn't mind having a family and children, if it's with you.~ DO ~SetGlobal("C0MazzyRomanceEpFuture","GLOBAL",1)~ + toblt6.5
+  ++ ~I'm sorry, Mazzy. After all I've been though, I've changed my mind. I don't think I'm fit to raise a child.~ + toblt6.5
+  ++ ~I'm sorry, Mazzy. I still feel the same way. I don't want to raise a child.~ + toblt6.5
+
+CHAIN BMAZZY25 toblt6.5
+~I see.~
+= ~I was prepared to accept your answer, no matter what it may have been. I only wished to know what future I should prepare myself for... if I am fortunate enough to have it at all.~
+= ~No matter what, if you are to be a continued part of my life, then it is enough. I will be happy.~
+EXIT
+
+CHAIN IF WEIGHT #-1 ~Global("C0MazzyToBLoveTalk","GLOBAL",14)~ THEN BMAZZY25 toblt7
+~I have decided, <CHARNAME>. When this is all over, and should we both be alive and unchanged... I want a wedding.~ [C0BLANK]
+= ~A glorious one, one that we shall remember even when we are both old and frail. Just one day... where I may be as selfish and happy as I want, without feeling a moment of shame.~
+END
+  ++ ~Then we shall have it, my love. With friends, music, a grand feast... anything you like.~ + toblt7.1
+  ++ ~This might be the first time you've ever mentioned wanting to be selfish, Mazzy. Are you quite yourself today?~ + toblt7.2
+  ++ ~Just one day? You give your own desires too little worth, my dear. I'm going to make sure to spoil you for the rest of our life together.~ + toblt7.3
+  ++ ~It's far too early to even think about a wedding, Mazzy. For all we know, one of us might not even make it.~ + toblt7.0
+
+CHAIN BMAZZY25 toblt7.0
+~Ah. I was hoping you would be less pessimistic, but I suppose you have a point. If so, however, then it is even more important that we get one last thing out of the way.~
+EXTERN BMAZZY25 toblt7.5
+
+CHAIN BMAZZY25 toblt7.1
+~Indeed. Anything, and everything... but it would not be complete without you standing opposite me at the altar. As long as I have that, everything else is only a bonus.~
+EXTERN BMAZZY25 toblt7.4
+
+CHAIN BMAZZY25 toblt7.2
+~I am being more honest than I have ever been, <CHARNAME>. For the first time ever, I believe I should be entitled to what I want... even if it is but an extension of what I already have.~
+EXTERN BMAZZY25 toblt7.4
+
+CHAIN BMAZZY25 toblt7.3
+~Is that so? Well, if 'tis truly the case, then I suppose I have even more to look forward to... though at its core, it is the greatest gift simply to have you with me at all.~
+EXTERN BMAZZY25 toblt7.4
+
+CHAIN BMAZZY25 toblt7.4
+~You may laugh at me for sounding so truly desperate, but... I cannot help it. There is so much more I have yet to do, that I wish to do with you there with me.~
+== BMAZZY25 IF ~Gender(Player1,MALE)
+      OR(2)
+      Global("C0MazzyRomanceEpFuture","GLOBAL",1)
+      Global("C0MazzyRomanceEpFuture","GLOBAL",2)~ THEN ~I wish to wake up every morning and be greeted with a kiss, to sit beside you by the fireplace when I am old, to return home and be greeted by our children calling for and embracing their mama and papa. I want all of this... and it must begin somewhere.~
+== BMAZZY25 IF ~!Gender(Player1,MALE)
+      OR(2)
+      Global("C0MazzyRomanceEpFuture","GLOBAL",1)
+      Global("C0MazzyRomanceEpFuture","GLOBAL",2)~ THEN ~I wish to wake up every morning and be greeted with a kiss, to sit beside you by the fireplace when I am old, to return home and be greeted by the children we've raised calling for and embracing their mamas. I want all of this... and it must begin somewhere.~
+== BMAZZY25 IF ~!Global("C0MazzyRomanceEpFuture","GLOBAL",1)
+      !Global("C0MazzyRomanceEpFuture","GLOBAL",2)~ THEN ~You have mentioned your reluctance for raising a child, and it is something I must slowly accept... but still, there are many things we may yet do together. I still wish to wake up every morning and be greeted with a kiss, to sit beside you by the fireplace when I am old... and it must begin somewhere.~
+== BMAZZY25 ~I have not told you yet, but not long before we left the elven city, I received a letter from Pala... and in it, I learned that she and Danno have finally wed. She is sad that I could not be there to see the day, but I may make it up to her when it becomes our turn... and Pala is more than eager to carry flowers for us on that day.~
+== BMAZZY25 ~So, if I am to have that, and assuming you are willing to accept, I should say this now...~
+EXTERN BMAZZY25 toblt7.5
+
+CHAIN BMAZZY25 toblt7.5
+~<CHARNAME>, my love, you... would you...~
+= ~...you... my—~
+= ~Damn it all. Mazzy Fentan, where is your courage when you need it the most? How can such simple words defeat you so easily?~
+END
+  ++ ~I'll say it instead then—Mazzy, would you be my wife?~ + toblt7.6
+  ++ ~It's alright. I know what you're trying to say, and my answer is "yes".~ + toblt7.7
+  ++ ~Mazzy, if it's too difficult right now, we don't have to rush it. Let's slow down and think it through before we decide.~ + toblt7.8
+
+CHAIN BMAZZY25 toblt7.6
+~Ah...~
+= ~...Yes. Now and forevermore.~
+EXTERN BMAZZY25 toblt7.7
+
+CHAIN BMAZZY25 toblt7.7
+~Thank you, my love.~
+EXIT
+
+CHAIN BMAZZY25 toblt7.8
+~Yes, of course. Clearly I am growing far too impatient for my own good... I should believe in you, <CHARNAME>. That you will might still accept... and still be here to say it.~
+EXIT
+
+CHAIN IF WEIGHT #-1 ~Global("C0MazzyToBLoveTalk","GLOBAL",16)~ THEN BMAZZY25 toblt8
+~The end is coming, is it not? For the first time in as long as I can remember, I... I am afraid. And I must admit it both to myself, and to you.~ [C0BLANK]
+END
+  ++ ~Don't be afraid, my love. I am with you.~ + toblt8.1
+  ++ ~What do you fear, Mazzy? Losing me?~ + toblt8.2
+  ++ ~I am afraid too. I'm afraid of the choice that this will all amount to.~ + toblt8.3
+
+CHAIN BMAZZY25 toblt8.1
+~Aye, and you are my bastion in the most trying of times... yet, for how much longer?~
+EXTERN BMAZZY25 toblt8.3
+
+CHAIN BMAZZY25 toblt8.2
+~Yes.~
+EXTERN BMAZZY25 toblt8.3
+
+CHAIN BMAZZY25 toblt8.3
+~I have tried to avoid thinking of it. I have planned our future, given myself every reason to believe nothing between us will change for the worse. And I am happy, <CHARNAME>, that it is even a possibility.~
+= ~But I fear losing it all. Not because I doubt you, <CHARNAME>, but because for all that we mortals struggle, the will of the gods may overcome us regardless.~
+END
+  ++ ~I can swear an oath to you, my love. I will not abandon you no matter how much power is offered to me.~ + toblt8.4
+  ++ ~Perhaps you are right... to take the seat of my father may not be a choice so much as an obligation.~ + toblt8.5
+  ++ ~It does us no good to worry about it. If there is a chance, I will resist. If I fail, then I will have at least tried.~ + toblt8.5
+
+CHAIN BMAZZY25 toblt8.4
+~No, <CHARNAME>, I cannot make you do that. I do not wish for what we share to be bound by oaths, lest it become a boundary we set between us. I only wish...~
+EXTERN BMAZZY25 toblt8.5
+
+CHAIN BMAZZY25 toblt8.5
+~Promise me only one thing, my love. Even should you leave me, and the power of the gods becomes yours... that it will not change who you are. You will always be the <PRO_MANWOMAN> I love.~
+END
+  ++ ~I promise.~ + toblt8.6
+  ++ ~There's no knowing what I could become, but... I'll try.~ + toblt8.6
+  ++ ~I can't promise that, Mazzy. Gods are eternal. It's impossible for me not to change.~ + toblt8.7
+
+CHAIN BMAZZY25 toblt8.6
+~That is all I can ask for.~
+EXIT
+
+CHAIN BMAZZY25 toblt8.7
+~Then... at the very least, while you still walk with me... remain as you are. Give me something to remember until the day my own memory fades.~
+EXIT
+
 ADD_STATE_TRIGGER BMAZZY25 0 ~!Global("C0MazzyRomanceActive","GLOBAL",2)~
-
-ADD_TRANS_TRIGGER PLAYER1 33
-~!Global("C0MazzyRomanceActive","GLOBAL",2)~ IF ~IsValidForPartyDialog("Mazzy")~
-
-EXTEND_TOP PLAYER1 33 #1
-IF ~IsValidForPartyDialog("Mazzy") Global("C0MazzyRomanceActive","GLOBAL",2)~ EXTERN PLAYER1 C0MazzyToL
-END
-
-CHAIN PLAYER1 C0MazzyToL
-~Mazzy: your stalwart and valiant companion, who has sworn her sword, bow, life and heart all to you. You know she will stand with you to the very end without a hint of fear... yet part of you still wonders if there is any doubt yet remaining within her.~
-END
-  ++ ~Mazzy... I—~ EXTERN MAZZYJ C0MazzyToL.1
-
-CHAIN MAZZYJ C0MazzyToL.1
-~Come now, <CHARNAME>, I think we both know each other well enough to know there is no room for hesitation in either of our hearts. But as this may be the right time... there are indeed some words I must say first.~
-== MAZZYJ ~Once, I believed myself prepared to face death just as I do now, but it was a fool's courage, nothing more. I considered myself having lost what mattered the most to me, and with little more to lose, I had no cause to fear death if it meant I could meet my fallen comrades once again.~
-== MAZZYJ ~However... I see how different things are this time. No longer do I stand in defiance against an end, but for a chance at a new beginning... one we will not have unless we are victorious this day.~
-== MAZZYJ ~Here, I fight not as a knight, not for honor or glory, but for your soul, and our future... and by Arvoreen, I shall not see it taken from us by any evil, no matter how powerful.~
-== MAZZYJ ~Take the lead, <CHARNAME>, and bring me to battle. For you, I will give all that I am and ever will be, just as you have given me the greatest gift of all. Victory, and life, awaits us, my love. Let us grasp at it together.~
-EXTERN PLAYER1 53
 
 EXTEND_BOTTOM SARVOLO 28
 IF ~Global("C0MazzyRomanceActive","GLOBAL",2)~ EXTERN SARVOLO C0MazzyToBVolo

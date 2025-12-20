@@ -1,6 +1,11 @@
 BACKUP ~weidu_external/backup/Artisans_MazzyRom~
 AUTHOR ~The Artisan~
 AUTO_TRA ~%MOD_FOLDER%/translations/%s~
+ALWAYS
+  INCLUDE ~%MOD_FOLDER%/lib/eet.tph~
+  INCLUDE ~%MOD_FOLDER%/lib/functions.tph~
+  
+END
 
 LANGUAGE ~English~
          ~english~

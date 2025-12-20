@@ -1,0 +1,32 @@
+IF
+    InParty("Mazzy")
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck("Mazzy",CD_STATE_NOTVALID)
+    !GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+    RealGlobalTimerExpired("C0MazzyLoveTalkTimer","GLOBAL")
+	  Global("C0MazzyRomanceActive","GLOBAL",2)
+	  Global("C0MazzyLoveTalk","GLOBAL",27)
+    AreaType(OUTDOOR)
+    TimeOfDay(NIGHT)
+THEN
+  RESPONSE #100
+    RealSetGlobalTimer("C0MazzyLoveTalkTimer","GLOBAL",2500)
+    SetGlobal("C0MazzyLoveTalk","GLOBAL",28)
+	  ActionOverride("Mazzy",Interact(Player1))
+END
+
+IF
+    InParty("Mazzy")
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck("Mazzy",CD_STATE_NOTVALID)
+    RealGlobalTimerExpired("C0MazzyLoveTalkTimer","GLOBAL")
+    GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+	  Global("C0MazzyRomanceActive","GLOBAL",2)
+	  Global("C0MazzyToBLoveTalk","GLOBAL",9)
+    AreaType(OUTDOOR)
+    TimeOfDay(NIGHT)
+THEN
+  RESPONSE #100
+    SetGlobal("C0MazzyToBLoveTalk","GLOBAL",10)
+	  ActionOverride("Mazzy",Interact(Player1))
+END

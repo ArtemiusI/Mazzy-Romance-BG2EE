@@ -7,6 +7,15 @@ COPY ~%MOD_FOLDER%/ITM~ ~OVERRIDE~
 /////////AUDIO//////////////////////////
 ////////////////////////////////////////
 
+COPY_EXISTING ~AR6200.BCS~ ~OVERRIDE~
+ DECOMPILE_BCS_TO_BAF  
+  REPLACE_TEXTUALLY ~Global("MazzyBio","GLOBAL",0)~ ~Global("MazzyBio","GLOBAL",0)
+  													 OR(2)
+													 !Global("C0MazzyRomanceActive","GLOBAL",2)
+													 Global("PlayerChoseEssence","GLOBAL",1)~
+ COMPILE_BAF_TO_BCS
+BUT_ONLY_IF_IT_CHANGES
+
 LAF HANDLE_AUDIO END
 
 COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/d/dialog.d~ 
@@ -17,21 +26,12 @@ COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/baf/C0MAZVM1.baf~
 EXTEND_TOP ~cleanse.bcs~ ~%MOD_FOLDER%/baf/cleanse.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~baldur.bcs~ ~%MOD_FOLDER%/baf/baldur.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~mazzy.bcs~ ~%MOD_FOLDER%/baf/mazzy.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~mazz25.bcs~ ~%MOD_FOLDER%/baf/mazz25.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar0809.bcs~ ~%MOD_FOLDER%/baf/ar0809.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~ar6200.bcs~ ~%MOD_FOLDER%/baf/ar6200.baf~ EVALUATE_BUFFER
 EXTEND_TOP ~cut218g.bcs~ ~%MOD_FOLDER%/baf/cut218g.baf~ EVALUATE_BUFFER
+EXTEND_TOP ~player1d.bcs~ ~%MOD_FOLDER%/baf/player1d.baf~ EVALUATE_BUFFER
 
-COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/baf/C0MAZVAM.baf~ 
-
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~MAZZYD.BAF~ THEN BEGIN
-
-COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/baf/mazzyd.baf~ 
-
-    END ELSE BEGIN
-
-EXTEND_TOP ~mazzyd.bcs~ ~%MOD_FOLDER%/baf/mazzyd.baf~ EVALUATE_BUFFER
-
-        END
 
 COPY_EXISTING ~C0MAZVAM.CRE~ ~OVERRIDE~
 WRITE_ASCII 0x248 ~C0MAZVAM~  #8  // override
