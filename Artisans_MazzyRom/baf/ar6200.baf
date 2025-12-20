@@ -1,0 +1,47 @@
+// romanced, had children
+
+IF
+Global("StartEndBios","AR6200",1)
+InParty("Mazzy")
+!Global("PlayerChoseEssence","GLOBAL",1)
+Global("C0MazzyRomanceActive","GLOBAL",2)
+Global("C0MazzyRomanceEpFuture","GLOBAL",1)
+Global("MazzyBio","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("MazzyBio","GLOBAL",1)
+TextScreen("C0MazRE1")
+SmallWait(1)
+Continue()
+END
+
+IF
+Global("StartEndBios","AR6200",1)
+InParty("Mazzy")
+!Global("PlayerChoseEssence","GLOBAL",1)
+Global("C0MazzyRomanceActive","GLOBAL",2)
+Global("C0MazzyRomanceEpFuture","GLOBAL",2)
+Global("MazzyBio","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("MazzyBio","GLOBAL",1)
+TextScreen("C0MazRE2")
+SmallWait(1)
+Continue()
+END
+
+IF
+Global("StartEndBios","AR6200",1)
+InParty("Mazzy")
+!Global("PlayerChoseEssence","GLOBAL",1)
+Global("C0MazzyRomanceActive","GLOBAL",2)
+!Global("C0MazzyRomanceEpFuture","GLOBAL",1)
+!Global("C0MazzyRomanceEpFuture","GLOBAL",2)
+Global("MazzyBio","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("MazzyBio","GLOBAL",1)
+TextScreen("C0MazRE3")
+SmallWait(1)
+Continue()
+END
