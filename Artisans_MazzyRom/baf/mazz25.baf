@@ -38,6 +38,7 @@ IF
 THEN
   RESPONSE #1
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+    PlaySong(%C0MAZRM%)
 	  Interact(Player1)
   RESPONSE #2
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
@@ -73,6 +74,7 @@ IF
 THEN
   RESPONSE #3
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+    PlaySong(%C0MAZRM%)
 	  Interact(Player1)
   RESPONSE #4
     RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
@@ -89,6 +91,7 @@ IF
 THEN
     RESPONSE #100
         SetGlobal("C0MazzyToBLoveTalk","GLOBAL",6)
+        PlaySong(%C0MAZRM%)
         Interact(Player1)
 END
 
@@ -119,6 +122,7 @@ IF
 THEN
   RESPONSE #7
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+    PlaySong(%C0MAZRM%)
 	  Interact(Player1)
   RESPONSE #8
     RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
@@ -128,18 +132,21 @@ THEN
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
   RESPONSE #11
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+    PlaySong(%C0MAZRM%)
 	  Interact(Player1)
   RESPONSE #12
     RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
   RESPONSE #13
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+    PlaySong(%C0MAZRM%)
 	  Interact(Player1)
   RESPONSE #14
     RealSetGlobalTimer("C0MazzyToBLoveTalkTimer","GLOBAL",2500)
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
   RESPONSE #15
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)
+    PlaySong(%C0MAZRM%)
 	  Interact(Player1)
   RESPONSE #16
     IncrementGlobal("C0MazzyToBLoveTalk","GLOBAL",1)

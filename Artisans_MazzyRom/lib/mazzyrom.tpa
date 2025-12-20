@@ -7,6 +7,43 @@ COPY ~%MOD_FOLDER%/ITM~ ~OVERRIDE~
 /////////AUDIO//////////////////////////
 ////////////////////////////////////////
 
+DEFINE_PATCH_FUNCTION ~GET_2DA_ROW~
+	INT_VAR
+		starting_row=0
+		numcolumns=0
+		match_column=0
+		found_it=0
+	STR_VAR
+		match=~DEFA~
+	RET
+		numcols
+		matched
+BEGIN
+		COUNT_2DA_ROWS numcolumns numrows
+		FOR (i = starting_row; i < numrows; ++i) BEGIN
+			READ_2DA_ENTRY i match_column numcolumns string_to_match
+			PATCH_IF (~%string_to_match%~ STRING_EQUAL_CASE ~%match%~) BEGIN
+				matched = i
+				found_it = 1
+				i = numrows
+
+			END
+		END
+		numcols = numcolumns
+		PATCH_IF (found_it = 0) BEGIN
+			PATCH_FAIL ~GET_2DA_ROW: Could not find a row that contains %match% in column %match_column%.~
+		END
+END
+	
+ADD_MUSIC ~C0MAZRM~ ~%MOD_FOLDER%/music/C0MAZRM.mus~
+COPY ~%MOD_FOLDER%/music/C0MAZRMa.acm~ ~MUSIC/C0MAZRM/C0MAZRMa.acm~
+
+COPY_EXISTING ~SONGLIST.2da~ ~override~
+	LPF GET_2DA_ROW INT_VAR numcolumns=3 match_column=2 STR_VAR match=~C0MAZRM.mus~ RET therow=matched END
+	READ_2DA_ENTRY therow 0 3 ~C0Mazzy_romance_song~
+
+	OUTER_SET C0MAZRM = C0Mazzy_romance_song
+
 COPY_EXISTING ~AR6200.BCS~ ~OVERRIDE~
  DECOMPILE_BCS_TO_BAF  
   REPLACE_TEXTUALLY ~Global("MazzyBio","GLOBAL",0)~ ~Global("MazzyBio","GLOBAL",0)
