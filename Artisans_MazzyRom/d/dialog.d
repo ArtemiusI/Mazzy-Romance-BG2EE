@@ -1470,6 +1470,30 @@ CHAIN BMAZZY radiantf.3
 ~If you truly believe so, then it appears that I have my own share of shame to admit. Not to you, though... you are unworthy of it.~
 EXIT
 
+// ROMANCE CONTENT: the second slayer change
+
+INTERJECT Player1 7 C0MazzySecondSlayerChange0
+== MAZZYJ IF ~IsValidForPartyDialog("MAZZY") OR(2) Global("C0MazzyRomanceActive","GLOBAL",1) Global("C0MazzyRomanceActive","GLOBAL",2)~ THEN ~You are so cold, <CHARNAME>, even more than should be expected of this forsaken place. Might I remain closer to you, so that you may find some comfort after what you have suffered? It... pains me to see you thus.~
+END
+++ ~No, Mazzy. Do not do that! I don't think I can control that monster!~ EXTERN MAZZYJ C0MazzySecondSlayerChange1
+++ ~Mazzy... run. RUN! It's happening again!~ EXTERN MAZZYJ C0MazzySecondSlayerChange1
+++ ~Flee, damn you!~ EXTERN MAZZYJ C0MazzySecondSlayerChange1
+
+CHAIN MAZZYJ C0MazzySecondSlayerChange1
+~You speak, but I cannot hear you... the suffering you have been though is truly unimaginable. I—by Arvoreen, NO! <CHARNAME>!~
+DO ~SetGlobal("C0MazzySecondSlayerChange","GLOBAL",1)
+ActionOverride(Player1,ReallyForceSpell(Myself,SLAYER_CHANGE))~
+EXIT
+
+INTERJECT Player1 10 C0MazzySlayerSurvived1
+== MAZZYJ IF ~IsValidForPartyDialog("MAZZY") OR(2) Global("C0MazzyRomanceActive","GLOBAL",1) Global("C0MazzyRomanceActive","GLOBAL",2)~ THEN ~<CHARNAME>... oh, <CHARNAME>...~
+== MAZZYJ ~This is far worse than anything I have experienced. Please do not blame yourself, <CHARNAME>. I do not. I cannot allow you to feel alone now, of all times.~
+DO ~SetGlobal("DrowTalk","GLOBAL",5)~ EXIT
+
+EXTEND_BOTTOM Player1 10
+IF ~Dead("MAZZY") Global("C0MazzySecondSlayerChange","GLOBAL",1)~ EXTERN Player1 12
+END
+
 ////// BODHI
 
 EXTEND_BOTTOM BODHIAMB 5
@@ -2293,9 +2317,9 @@ IF ~Global("C0MazzyRomanceActive","GLOBAL",2)~ DO ~ClearAllActions() StartCutSce
 END
 
 CHAIN 
-IF ~Global("C0AuraToBRomWraith","GLOBAL",0)~ THEN C0MAZ25W tob-wraith1
+IF ~Global("C0MazzyToBRomWraith","GLOBAL",0)~ THEN C0MAZ25W tob-wraith1
 ~Ma—mazzy? Is it truly you? This cannot be another of the Shade Lord's cruel tricks... can it?~
-DO ~SetGlobal("C0AuraToBRomWraith","GLOBAL",1)~
+DO ~SetGlobal("C0MazzyToBRomWraith","GLOBAL",1)~
 == MAZZY25J ~How... Patrick? It is you, just as I remember you, but—no. Your spirit was freed. You should be at peace!~
 == C0MAZ25W ~Peace? How could I be at peace, when the unjust nature of my end was never brought to light? Regardless of whom killed me, I died because of you, Mazzy. I followed you into a fate worse than death itself! Why must I suffer the punishment of your own sins?~
 == MAZZY25J ~I—Patrick, I know. It shames me to this day that I led you to that dark place, ignorant of the true depths of the evil there. But I... I have never forgotten the good man you are! You would never have blamed me, I know it!~

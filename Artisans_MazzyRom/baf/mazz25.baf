@@ -86,7 +86,7 @@ IF
     GlobalLT("C0MazzyToBLoveTalk","GLOBAL",6)
     GlobalGT("WraithPunish","GLOBAL",0)
     AreaCheck("AR5202")
-    Dead("HGWRA01")
+    Global("C0MazzyToBRomWraith","GLOBAL",1)
     Global("C0MazzyRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
