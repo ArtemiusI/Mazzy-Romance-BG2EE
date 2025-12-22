@@ -1487,7 +1487,7 @@ EXIT
 
 INTERJECT Player1 10 C0MazzySlayerSurvived1
 == MAZZYJ IF ~IsValidForPartyDialog("MAZZY") OR(2) Global("C0MazzyRomanceActive","GLOBAL",1) Global("C0MazzyRomanceActive","GLOBAL",2)~ THEN ~<CHARNAME>... oh, <CHARNAME>...~
-== MAZZYJ ~This is far worse than anything I have experienced. Please do not blame yourself, <CHARNAME>. I do not. I cannot allow you to feel alone now, of all times.~
+== MAZZYJ ~This is far worse than anything I have experienced. Please do not blame yourself, <CHARNAME>. I do not blame you, nor will I distance myself from you. I cannot allow you to feel alone now, of all times.~
 DO ~SetGlobal("DrowTalk","GLOBAL",5)~ EXIT
 
 EXTEND_BOTTOM Player1 10
