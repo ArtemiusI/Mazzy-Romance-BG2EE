@@ -2379,7 +2379,7 @@ CHAIN MAZZY25J C0MazzyRomanceSolarPers.6
 = ~So if you believe this is the correct path, whether for yourself or for the realms... then abandon all doubt and claim it. My soul belongs always to Arvoreen... but my heart will forever be yours, and even in the realms of the divine, we may yet meet again one day.~
 = ~Such are my last words of guidance to you... perhaps the last you will ever hear from me, the last you may ever need, even. But if there is yet a chance we may both walk away from here, unchanged... I will hold onto hope. Regardless of the outcome, know that you have my undying love, my <CHARNAME>.~
 END
-COPY_TRANS FINSOL01 27
+COPY_TRANS FINSOL01 28
 
 // romanced, PC chooses to leave
 
