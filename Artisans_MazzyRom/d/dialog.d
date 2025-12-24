@@ -2378,7 +2378,6 @@ CHAIN MAZZY25J C0MazzyRomanceSolarPers.6
 = ~I do not know. I only know that right now, we are mortal, and one day all of our past, present and future will become but memory... and perhaps, if godhood is a form of freedom from this fate, then it would be right to take it. I would not want it. But I do want to ensure your eternal happiness... yet eternity means different things for mortals and a god.~
 = ~So if you believe this is the correct path, whether for yourself or for the realms... then abandon all doubt and claim it. My soul belongs always to Arvoreen... but my heart will forever be yours, and even in the realms of the divine, we may yet meet again one day.~
 = ~Such are my last words of guidance to you... perhaps the last you will ever hear from me, the last you may ever need, even. But if there is yet a chance we may both walk away from here, unchanged... I will hold onto hope. Regardless of the outcome, know that you have my undying love, my <CHARNAME>.~
-END
 EXTERN FINSOL01 28
 
 // romanced, PC chooses to leave
@@ -2414,5 +2413,4 @@ END
 CHAIN MAZZY25J C0MazzySolarLeave2.1
 ~Oh, <CHARNAME>. I should have believed from the start that you would overcome, as you always have. Perhaps we have both been fools... but happy fools we shall be, 'til the end of our lives.~
 = ~Before we have even spoken any vows, you have already given me the greatest gift of all. You are truly the bravest, greatest <PRO_MANWOMAN> I have ever known. I love you... more than words can ever say.~
-END
 EXTERN FINSOL01 33
